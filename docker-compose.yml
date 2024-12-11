@@ -5,44 +5,31 @@ services:
     build: './django-atlantis-dark'
     container_name: django-atlantis-dark
     restart: always
-    volumes:
-      - ./django-atlantis-dark:/app
 
   django_argon_dashboard:
     build: './django-argon-dashboard'
     container_name: django-argon-dashboard
     restart: always
-    volumes: 
-      - ./django-argon-dashboard:/app
 
   django_soft_ui_dashboard:
     build: './django-soft-ui-dashboard'
     container_name: django-soft-ui-dashboard
     restart: always
-    volumes:
-      - ./django-soft-ui-dashboard:/app
 
   django_adminlte:
     build: './django-adminlte'
     container_name: django-adminlte
     restart: always
-    volumes:
-      - ./django-adminlte:/app
 
   django_modernize:
     build: './django-modernize'
     container_name: django-modernize
     restart: always
-    volumes:
-      - ./django-modernize:/app
 
   flask_material_dashboard:
     build: './flask-material-dashboard'
     container_name: flask-material-dashboard
     restart: always
-    volumes:
-      - ./flask-material-dashboard:/app
-
   db:
     image: postgres:13
     container_name: postgres_db
