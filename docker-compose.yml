@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - django_atlantis_dark
+      - django_argon_dashboard
+      - django_soft_ui_dashboard
+      - django_adminlte
+      - django_modernize
+      - flask_material_dashboard
+
+  django_atlantis_dark:
+    build: ./django-atlantis-dark
+    container_name: django_atlantis_dark
+    restart: always
+    volumes:
+      - ./django-atlantis-dark:/app
+
+  django_argon_dashboard:
+    build: ./django-argon-dashboard
+    container_name: django_argon_dashboard
+    restart: always
+    volumes:
+      - ./django-argon-dashboard:/app
+
+  django_soft_ui_dashboard:
+    build: ./django-soft-ui-dashboard
+    container_name: django_soft_ui_dashboard
+    restart: always
+    volumes:
+      - ./django-soft-ui-dashboard:/app
+
+  django_adminlte:
+    build: ./django-adminlte
+    container_name: django_adminlte
+    restart: always
+    volumes:
+      - ./django-adminlte:/app
+
+  django_modernize:
+    build: ./django-modernize
+    container_name: django_modernize
+    restart: always
+    volumes:
+      - ./django-modernize:/app
+
+  flask_material_dashboard:
+    build: ./flask-material-dashboard
+    container_name: flask_material_dashboard
+    restart: always
+    volumes:
+      - ./flask-material-dashboard:/app
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
