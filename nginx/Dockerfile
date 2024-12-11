@@ -1,2 +1,2 @@
 FROM nginx:stable-alpine-slim
-COPY ./nginx.conf ./etc/nginx/conf.d 
+COPY ./nginx.conf ./etc/nginx/conf.d
